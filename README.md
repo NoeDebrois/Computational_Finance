@@ -4,7 +4,9 @@ A repo where I can practice for the course Computational Finance
 ## Content
 | Folder | What's inside ? |
 |:-------|:------------|
-|[Unrealistic B&S]| Two ways to show why B&S is unrealistic & why we need better models |
+|Unrealistic B&S| Two ways to show why B&S is unrealistic & why we need better models |
+|Tests| Just some random simulations |
+|Portfolio Management| Everything related to this module of the Computational Finance course |
 
 ## Portfolio Management, Ginevra Angelini
 
