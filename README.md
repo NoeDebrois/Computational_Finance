@@ -4,10 +4,10 @@ A repo where I can practice for the course Computational Finance
 ## Content
 | Folder | What's inside ? |
 |:-------|:------------|
-|Lecture 1 - Unrealistic B&S| Two ways to show why B&S is unrealistic & why we need better models |
+|Lecture 1 - Unrealistic B&S| Two ways to show why B&S is unrealistic & why we need better models|
 |Lecture 4 - Merton & Kou Models| Simulation of jump times & Merton and Kou models for $(S_t)_t$|
 |Tests| Just some random simulations |
-|Portfolio Management| Everything related to this module of the Computational Finance course |
+|Portfolio Management| Everything related to the $\textit{"Portfolio Management"}$ module of the CF course|
 
 ## Portfolio Management, Ginevra Angelini
 
