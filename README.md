@@ -1,4 +1,4 @@
-# Computational_Finance
+# Computational Finance
 A repo where I can practice for the course Computational Finance
 
 ## Content
