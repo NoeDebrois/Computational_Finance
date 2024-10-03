@@ -8,6 +8,7 @@ A repo where I can practice for the course Computational Finance
 |Lecture 4 - Merton & Kou Models| Simulation of jump times & Merton and Kou models for $(S_t)_t$|
 |Tests| Just some random simulations |
 |Portfolio Management| Everything related to the $\textit{"Portfolio Management"}$ module of the CF course|
+|Financial Engineering| Financial Engineering labs|
 
 ## Portfolio Management, Ginevra Angelini
 
