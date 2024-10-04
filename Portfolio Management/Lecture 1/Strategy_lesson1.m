@@ -5,7 +5,7 @@ close all
 clc
 %% Read Prices
 
-path_map = '/Users/noedebrois/Desktop/Desktop - Noé’s MacBook Air/Politecnico/Computational Finance /AY 2024:2025/Portfolio Management/';
+path_map = '/Users/noedebrois/Desktop/Desktop - Noé’s MacBook Air/Politecnico/Computational Finance/AY 2024:2025/Portfolio Management/';
 filename = 'spx_price.xlsx';
 % Read the excel table :
 table_prices = readtable(strcat(path_map, filename));
