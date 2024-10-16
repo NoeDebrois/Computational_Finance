@@ -1,6 +1,11 @@
 %% Lecture 8 - Monte Carlo Simulation - Noé Debrois - 16/10/2024
 % MC with variance reduction : Antithetic Variable (AV), Variance Gamma (VG).
 % Pricing an European Call under VG by MC with AV.
+%
+% AV is here implemented through Z, not through DeltaS !
+% For the other way, see VG_Call_AV2.m ;
+% For no AV, see VG_Call.m.
+%
 clear
 clc
 %
@@ -25,10 +30,10 @@ char_exp = @(u) -log(1 + u.^2 * sigma^2 * k / 2 - 1i * theta * k * u) / k;
 % Drift :
 drift = r - char_exp(-1i);
 
-% STEP 1 : simulate 1 independent gamma variable with parameter dt.
+% STEP 1 : simulate 1 independent gamma variable with parameter dt / k.
 % Here M = 1 since it's not path dependant : we only need the final price !
 %
-% dS = DeltaS ~ gamma variable with parameter dt = T.
+% dS = DeltaS ~ gamma variable with parameter dt / k = T / k.
 % Here dt = T because dt = T / M = T / 1 since it's not path dependant !
 %
 dS = k * icdf('gamma', rand(Nsim, 1), T / k, 1);
@@ -47,7 +52,7 @@ XT = 0 + drift * T + theta * dS + sigma * sqrt(dS) .* Z;
 
 % Build ST1 and ST2 using the Antithetic Variable (AV) technique :
 ST1 = S0 * exp(XT);
-% AV :
+% AV (through Z -> -Z) :
 XT = 0 + drift * T + theta * dS - sigma * sqrt(dS) .* Z;
 ST2 = S0 * exp(XT);
 
