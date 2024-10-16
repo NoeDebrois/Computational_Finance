@@ -1,8 +1,10 @@
 %% LECTURE 8 - Monte Carlo Simulation - Noé Debrois - 16/10/2024
+% MC with variance reduction technique : Antithetic Variables (AV).
+% Pricing EU Call Option under B&S by MC with AV.
 clear
 clc
 %% Parameters :
-% Simulation parameter :
+% MC parameter :
 Nsim = 1e6;
 % Contract parameters :
 T = 1; K = 100;
