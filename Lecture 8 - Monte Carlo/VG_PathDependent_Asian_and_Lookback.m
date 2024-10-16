@@ -5,7 +5,7 @@ clear
 clc
 %
 %% Parameters :
-% MC Parameter :
+% MC parameter :
 Nsim = 1e6;
 % Market parameters :
 S0 = 100; r = 0.02;
