@@ -40,18 +40,3 @@ k=params(3);
 V=@(u) -log(1+u.^2*sigma^2*k/2-1i*theta*k*u)/k;
 drift_rn=-V(-1i); % Drift Risk_neutral
 V=drift_rn*1i*v+V(v);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
