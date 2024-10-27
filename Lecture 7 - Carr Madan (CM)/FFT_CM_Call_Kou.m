@@ -42,6 +42,8 @@ function [Price] = FFT_CM_Call_Kou(Strike, params, T, r, S0)
 
     % Fourier transform of z_T(k) (denoted Z_k):
     %
+    % THIS IS THE ONLY PLACE WHERE THE MODEL ENTERS : change the
+    % characteristic function if you want to change model.
     CharFunc = @(v) exp(T * CharExp(v, params)); % Under Levy measure, Phi @ T = exp(T * Psi)
     % where Psi is the characteristic exponent (defined in CharExp function below).
     %
