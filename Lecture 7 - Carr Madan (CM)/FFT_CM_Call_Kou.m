@@ -38,7 +38,7 @@ function [Price] = FFT_CM_Call_Kou(Strike, params, T, r, S0)
     k = -lambda * N / 2 + lambda * (0:N-1); % log strike grid
     % k_l = -lambda * N / 2 + lambda * l (l from 0 to N-1).
 
-    tic
+    %tic
 
     % Fourier transform of z_T(k) (denoted Z_k):
     %
@@ -46,8 +46,8 @@ function [Price] = FFT_CM_Call_Kou(Strike, params, T, r, S0)
     % where Psi is the characteristic exponent (defined in CharExp function below).
     %
     % Risk-neutral check (should equal 1):
-    disp('RiskNeutral Check (should be 1)')
-    CharFunc(-1i) % IT HAS TO BE 1.
+    % disp('RiskNeutral Check (should be 1)')
+    % CharFunc(-1i) % IT HAS TO BE 1.
 
     % Carr-Madan formula (from FFT.pdf, page 15): 
     Z_k = exp(1i * r * v * T) .* (CharFunc(v - 1i) - 1) ./ ...
@@ -77,7 +77,7 @@ function [Price] = FFT_CM_Call_Kou(Strike, params, T, r, S0)
     % - Convert log-strikes to strikes:
     K = S0 * exp(k);
 
-    toc
+    %toc
 
     % Output Processing:
     % - Filter strikes: remove very small and large strikes.
@@ -89,9 +89,9 @@ function [Price] = FFT_CM_Call_Kou(Strike, params, T, r, S0)
     % - WARNING: This is not a put option, as the x-axis represents the 
     % strike, not the spot price.
     Price = interp1(K, C, Strike, 'spline');
-    plot(K, C);
-    title('Option Price');
-    xlabel('Strike');
+    %plot(K, C);
+    %title('Option Price');
+    %xlabel('Strike');
 end
 
 %>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
