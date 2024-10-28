@@ -9,6 +9,7 @@ A repo where I can practice for the course Computational Finance
 |Lecture 7 - Carr Madan (CM)| Pricing, and calibration of $\sigma$ on market data, using CM formula |
 |Lecture 8 - Monte Carlo| Some MC simulations with variance reduction techniques|
 |Lecture 9 - Monte Carlo, bis| Other MC simulations for path dependent option pricing, with variance reduction techniques|
+|Lecture 10 - MC American| MC simulations for American Option pricing, based on L&S article|
 |Tests| Just some random simulations |
 |Portfolio Management| Everything related to the $\textit{"Portfolio Management"}$ module of the CF course|
 |Financial Engineering| Financial Engineering labs|
