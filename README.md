@@ -4,11 +4,11 @@ A repo where I can practice for the course Computational Finance
 ## Content
 | Folder | What's inside ? |
 |:-------|:------------|
-|Lecture 1 - Unrealistic B&S| Two ways to show why B&S is unrealistic & why we need better models|
-|Lecture 4 - Merton & Kou Models| Simulation of jump times & Merton and Kou models for $(S_t)_t$|
-|Lecture 7 - Carr Madan (CM)| Pricing, and calibration of $\sigma$ on market data, using CM formula |
-|Lecture 8 - Monte Carlo| Some MC simulations with variance reduction techniques|
-|Lecture 9 - Monte Carlo, bis| Other MC simulations for path dependent option pricing, with variance reduction techniques|
+|Lecture 01 - Unrealistic B&S| Two ways to show why B&S is unrealistic & why we need better models|
+|Lecture 04 - Merton & Kou Models| Simulation of jump times & Merton and Kou models for $(S_t)_t$|
+|Lecture 07 - Carr Madan (CM)| Pricing, and calibration of $\sigma$ on market data, using CM formula |
+|Lecture 08 - Monte Carlo| Some MC simulations with variance reduction techniques|
+|Lecture 09 - Monte Carlo, bis| Other MC simulations for path dependent option pricing, with variance reduction techniques|
 |Lecture 10 - MC American| MC simulations for American Option pricing, based on L&S article|
 |Tests| Just some random simulations |
 |Portfolio Management| Everything related to the $\textit{"Portfolio Management"}$ module of the CF course|
