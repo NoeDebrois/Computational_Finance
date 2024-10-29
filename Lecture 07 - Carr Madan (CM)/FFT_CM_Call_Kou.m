@@ -69,6 +69,11 @@ function [Price] = FFT_CM_Call_Kou(Strike, params, T, r, S0)
     x = w .* eta .* Z_k .* exp(1i * pi * (0:N-1)); % Integrand for FFT
     
     % - FFT formula for z_T(k_l):
+    %
+    % ! fft() because MATLAB's FFT is implemented with a "-" in the exp,
+    % whereas probabilists use the IFT with "-". So here we perform the FFT
+    % in MATLAB's POV, but the IFT in probabilists' POV.
+    %
     z_k = real(fft(x) / pi); % Take real part for stability : due to 
     % numerical approximation, we need 'real()' to put the imaginary part
     % to zero. We know theoretically that it should be indeed real.

@@ -64,7 +64,9 @@ function [Price] = FFT_CM_Call_BS(K_i)
 
     % FFT formula for z_T(k_l): 
     %
-    % ! fft() even though it's an ifft() but MATLAB defines it differently!
+    % ! fft() because MATLAB's FFT is implemented with a "-" in the exp,
+    % whereas probabilists use the IFT with "-". So here we perform the FFT
+    % in MATLAB's POV, but the IFT in probabilists' POV.
     %
     z_k = real(fft(x) / pi); % Due to numerical approximation, use 'real()'
     % to put the imaginary part to zero.
@@ -116,7 +118,9 @@ end
 
 function phi_T = characteristic_func_BS(sig, T, y)
     % Risk-Neutral characteristic function computation.
-    % 
+    % Formula for a Geometric Brownian Motion (GBM) :
+    % phi_T(y) = exp(- sigma^2/2 * iyT - sigma^2/2 * y^2 * T)
+    %
     phi_T = exp(1i * (-sig^(2) / 2 * T) .* y ...
         - (T * sig.^(2) * y.^(2)) / 2);
 end
