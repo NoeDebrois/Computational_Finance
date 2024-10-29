@@ -16,7 +16,7 @@ function [Price] = FFT_CM_Call_Kou(Strike, params, T, r, S0)
     % - A: Upper bound for the integral domain.
     Npow = 16;
     N = 2^Npow;
-    A = 1000;
+    A = 1000; % Truncation of the integral.
 
     % Define v_j (or j*eta in the article) to compute the integral as a summation:
     %
@@ -79,7 +79,7 @@ function [Price] = FFT_CM_Call_Kou(Strike, params, T, r, S0)
     % - Convert log-strikes to strikes:
     K = S0 * exp(k);
 
-    %toc
+    %time = toc
 
     % Output Processing:
     % - Filter strikes: remove very small and large strikes.

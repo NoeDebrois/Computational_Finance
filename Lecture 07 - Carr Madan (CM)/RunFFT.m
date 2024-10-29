@@ -15,3 +15,6 @@ FFT_CM_Call_Kou(Strike, params, T, r, S0)
 % It's very fast and with a nice precision.
 % It should be great to calibrate to the market, because calibration is a 
 % process that requires a lot of iterations, but on plain vanilla objects.
+
+% For comparison with the same thing but under B&S model :
+FFT_CM_Call_BS(Strike)
