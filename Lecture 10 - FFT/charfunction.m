@@ -26,7 +26,7 @@ switch parameters.distr
         m = parameters.m;
         s = parameters.s;
 	
-	% Rearrange parameters (time rescaling)
+	    % Rearrange parameters (time rescaling)
         m = m*dt;
         s = s*sqrt(dt);
 
