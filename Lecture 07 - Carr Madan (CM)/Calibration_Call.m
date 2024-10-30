@@ -17,7 +17,8 @@ clear; close all;
 % European Call Options : we use data with two maturities, and a few
 % strikes for each maturity.
 
-Maturity = 4/12; % Maturity of 4 months 
+Maturity = 4/12; % Ma
+% turity of 4 months 
 Data = [25.30	200 % Prices, Strikes
         10.00	225
         18.20	210

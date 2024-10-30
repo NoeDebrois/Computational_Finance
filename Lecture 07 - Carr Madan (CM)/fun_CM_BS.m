@@ -1,10 +1,11 @@
-function [Error,Price]=fun(x,spot,strike,rf,maturity,pmkt)
+function [Error,Price]=fun_CM_BS(x,spot,strike,rf,maturity,pmkt)
 
 % Initialize
 Price=zeros(length(strike),1);
 
 % Delete duplicate
 mat=unique(maturity);
+
 for i=1:length(mat)
     index=find(maturity==mat(i));
     Price(index)=FFT_CM_Call(strike(index),spot,mat(i),rf,x);
