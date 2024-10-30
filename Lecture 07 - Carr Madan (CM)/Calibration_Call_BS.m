@@ -1,5 +1,18 @@
 %% LECTURE 7 - Carr-Madan Method - Noé Debrois - 27/10/2024
-% 
+% This code implements the calibration of the model on the market prices.
+% It finds the right sigma (volatility) that fits best the market prices,
+% using Carr-Madan (CM) algorithm with B&S model (GBM).
+%
+% A remark on calibration :
+% Obviously if there is a formula, there is no problem : we calibrate using
+% the formula (cf when we inverse the B&S formula) to find sigma. But...
+% If we don't have a formula (like in the general Levy framework), the CM
+% algorithm is a GOOD CHOICE to perform the calibration of the model prices
+% on the market prices (because it is fast and quite accurate).
+% SO :
+% HERE IT IS USELESS SINCE IT'S B&S AND WE HAVE A FORMULA. IT WAS JUST TO
+% TRAIN AND TO SEE IF I WAS ABLE TO ADAPT THE CODE IN Calibration_Call.m
+% WITH KOU MODEL
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clear; close all;
 %
@@ -42,8 +55,8 @@ Data = [Data1; Data]; % We merge the two datasets (with two different
 %% Optimisation :
 
 % WE WANT to compute the sigma that minimizes the distance between market
-% price and model price, where the model price is computed using fun.m (i.e
-% Kou model, by Carr-Madan algorithm).
+% price and model price, where the model price is computed using fun_CM_BS.m 
+% (i.e B&S model, by Carr-Madan algorithm).
 
 % Parameters :
 r = 0.02; spot = 218.75;
@@ -58,6 +71,10 @@ tic
 [params, error] = lsqnonlin(@(params) ...
         fun_CM_BS(params, spot, Data(:,1), r, Data(:,2), Data(:,3)), ...
         x0, LB, UB)
+
+disp("Look only at the first parameter in params, since it is the only one " + ...
+    "for Black and Scholes model. The others are for models such as Kou (cf " + ...
+    "Calibration_Call.m if you want to see how those parameters are calibrated.")
 
 toc
 %

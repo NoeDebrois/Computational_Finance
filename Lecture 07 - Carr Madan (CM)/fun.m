@@ -28,4 +28,4 @@ for i=1:length(T)
 end
 
 % Difference between model price and market (real) price :
-dp = Price-pmkt;
+dp = Price - pmkt;
