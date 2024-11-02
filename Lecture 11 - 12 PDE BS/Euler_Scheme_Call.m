@@ -46,8 +46,8 @@ for j=M:-1:1 % BACKWARD from t_M to t_0.
     cnew(1) = 0;
     %
     for i=2:N
-        % Explicit Euler Scheme : by moving V_{j-1, i} on the left :
-        % V_{j-1, i} = -A * dt * V_{j, i-1} - B * dt * V_{j, i} - C * dt *
+        % Explicit Euler Scheme : by moving V_{j-1, i} (UNKNOWN) on the left :
+        % V_{j-1, i} = - A * dt * V_{j, i-1} - B * dt * V_{j, i} - C * dt *
         % V_{j, i+1}, 
         %
         % Where V_{j, i-1}, V_{j, i} & V_{j, i+1} are known.

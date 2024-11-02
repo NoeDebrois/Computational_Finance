@@ -47,7 +47,7 @@ for j=M:-1:1 % BACKWARD from t_M to t_0.
     cnew(1) = K * exp(-r * (T - (j - 1) * dt)) - Smin;
     %
     for i=2:N
-        % Explicit Euler Scheme : by moving V_{j-1, i} on the left :
+        % Explicit Euler Scheme : by moving V_{j-1, i} (UNKNOWN) on the left :
         % V_{j-1, i} = -A * dt * V_{j, i-1} - B * dt * V_{j, i} - C * dt *
         % V_{j, i+1}, 
         %
