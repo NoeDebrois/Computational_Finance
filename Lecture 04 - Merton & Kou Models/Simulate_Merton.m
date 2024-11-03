@@ -23,10 +23,11 @@ X = zeros(M+1,1);
 Z = randn(M,1);
 %
 % CONDITIONAL SIMULATION of jump times (the easiest way) :
+% cf "Simulate_Jump_Diffusion.pdf" : ALGORITHM 6.2
 % - Generates random nb from Poisson distribution of parameter lambda*t:
 NT = poissrnd(lambda*T);
 % - Generates and orders jump times chronologically :
-jumpT = sort(rand(1,NT)*T);
+jumpT = sort(rand(1,NT)*T); % sort(a vector of U() RV of length NT, rescaled between 0 and T)
 % - Simulate jump sizes, jumpSize ~ Normal(muJ, deltaJ^2) :
 jumpSize = muJ + deltaJ * randn(NT,1);
 % 

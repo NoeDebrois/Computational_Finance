@@ -3,7 +3,9 @@
 clear; close all;
 %
 % S_T = S0 * exp(X_T) with :
-% (X_t)_t ~ Kou model : Jumpsize ~ BLABLA
+% (X_t)_t ~ Kou model : Jumpsize ~ Asymmetric Exp(param) dist (param =
+% lambda+ for positive jumps, param = lambda- for negative jumps, p is the
+% probability of positive jump).
 %
 % General parameters :
 S0 = 1; % Initial value
@@ -27,10 +29,11 @@ X = zeros(M+1,1);
 Z = randn(M,1);
 % 
 % CONDITIONAL SIMULATION of jump times (the easiest way) :
+% cf "Simulate_Jump_Diffusion.pdf" : ALGORITHM 6.2
 % - Generates random nb from Poisson distribution of parameter lambda*t:
 NT = poissrnd(lambda*T);
 % - Generates and orders jump times chronologically :
-jumpT = sort(rand(1,NT)*T);
+jumpT = sort(rand(1,NT)*T); % sort(a vector of U() RV of length NT, rescaled between 0 and T)
 % 
 for i=1:M
     % 1) Simulate the continuous part of the path :
@@ -47,7 +50,7 @@ for i=1:M
             % Yes, there is a jump : let's simulate its sign + size :
             %
             u = rand; % RV ~ U((0,1)) to know which type of jump (+ or -).
-            if p < u 
+            if u < p 
                %
                % Positive jump :
                %

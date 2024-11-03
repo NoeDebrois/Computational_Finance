@@ -22,6 +22,7 @@ dt = T/M; % Time step
 X = zeros(M+1,1);
 Z = randn(M,1);
 %
+% cf "Simulate_Jump_Diffusion.pdf" : ALGORITHM 6.1.
 for i=1:M
     % 1) Simulate the continuous part of the path :
     %
