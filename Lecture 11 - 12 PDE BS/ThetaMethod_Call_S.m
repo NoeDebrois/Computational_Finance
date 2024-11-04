@@ -1,9 +1,10 @@
-clear
-close all
-% Pricing a plain vanilla Call Option
-% B&S model - price PDE
-% ThetaMethod
-
+%% LECTURE 11 - Implicit Euler for EU Call - Noé Debrois - 29/10/2024
+% Script to price a EU Call Option, under B&S model, using price PDE.
+% WARNING : NOT log-price PDE !
+% We implement Finite Difference Method using IMPLICIT EULER SCHEME.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+clear; close all;
+%
 %% 1. Parameters & Grids
 S0=1; K=0.95; r=0.001; sigma=0.5; T=1;
 M=1000;

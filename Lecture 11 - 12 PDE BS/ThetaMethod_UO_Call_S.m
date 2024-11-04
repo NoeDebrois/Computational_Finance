@@ -1,9 +1,10 @@
-clear
-close all
-% Pricing an Up&Out Call Option
-% B&S model - price PDE
-% ThetaMethod
-
+%% LECTURE 11 - Implicit Euler for EU Call - Noé Debrois - 29/10/2024
+% Script to price a Up&Out Call Option, under B&S model, using price PDE.
+% WARNING : NOT log-price PDE.
+% We implement Finite Difference Method using IMPLICIT EULER SCHEME.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+clear; close all;
+%
 %% 1. Parameters & Grids
 S0=1; K=0.95; r=0.001; sigma=0.5; T=1; U=1.2;
 M=500;

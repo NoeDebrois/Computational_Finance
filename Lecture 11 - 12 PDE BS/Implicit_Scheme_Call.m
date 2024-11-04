@@ -17,7 +17,7 @@ Smax = 3 * S0;   % a negligible probability of falling below 10% of S0, and
 xmin = log(Smin/S0); % x lives in [xmin, xmax]=[log(Smin/S0),log(Smax/S0)].
 xmax = log(Smax/S0);
 dx = (xmax - xmin) / N; % Space grid step.
-x = xmin + (0:N) * dx;  % From x0 = xmin to xN = xmax (in total : N+1 pts).
+x = xmin + (0:N) * dx; % From x0 = xmin to xN = xmax (in total : N+1 pts).
 % x = linspace(xmin, xmax, N+1);
 
 % Time grid :
@@ -95,7 +95,3 @@ ylabel('Call price at t = 0');
 price = interp1(x, c, 0, 'spline') % Interpolation of c at x = 0, i.e S = S0
 % (S0 being the one we the one we initialized in "Model parameters").
 [price_ex, ~] = blsprice(S0, K, r, T, sigma) % For comparison : B&S price.
-
-
-
-
