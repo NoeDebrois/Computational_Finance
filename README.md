@@ -11,7 +11,9 @@ A repo where I can practice for the course Computational Finance
 |Lecture 09 - Monte Carlo, bis| Other MC simulations for path dependent option pricing, with variance reduction techniques|
 |Lecture 10 - FFT| Convolution methods for pricing path dependent options (extension of CM)|
 |Lecture 10 - MC American| MC simulations for American Option pricing, based on L&S article|
-|Lecture 11-12 - PDE BS| Finite difference on B&S PDE for pricing (Euler Schemes Explicit / Implicit)|
+|Lecture 11 - 12 - PDE BS| Finite difference on B&S PDE for pricing (Euler Explicit / Implicit & Theta Method)|
+|Lecture 13 - 14 - | |
+|Lecture 15 - 2dPDE| |
 |Tests| Just some random simulations |
 |Portfolio Management| Everything related to the $\textit{"Portfolio Management"}$ module of the CF course|
 |Financial Engineering| Financial Engineering labs|
