@@ -14,7 +14,7 @@ A repo where I can practice for the course Computational Finance
 |Lecture 11 - 12 - PDE BS| Finite difference on B&S PDE for pricing (Euler Explicit / Implicit & Theta Method)|
 |Lecture 13 - 14 - PDE AM & PIDE| B&S PDE for American option pricing & PIDE for pricing under Lévy|
 |Lecture 15 - 2dPDE| |
-|Lecture 16 - Heston Model| Heston model implementations for stochastic volatility (Euler scheme & Andersen's article scheme) |
+|Lecture 16 - Heston Model| Heston model implementations for stochastic volatility (Euler & Andersen's article schemes) |
 |Tests| Just some random simulations |
 |Portfolio Management| Everything related to the $\textit{"Portfolio Management"}$ module of the CF course|
 |Financial Engineering| Financial Engineering labs|
