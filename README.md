@@ -1,5 +1,5 @@
 # Computational Mathematics & Computational Finance :
-This is a repository where I put all my stuff from the course of Computational Finance, AY 2024/2025, Polytecnic University of Milan (Politecnico di Milano).
+This is a repository where I put all my stuff from the course of Computational Finance, AY 2024/2025, Polytecnic University of Milan (Politecnico di Milano). In this course we learn computational methods to simulate Lévy processes and Stochastic Volatility processes, to numerically approximate solutions of PDEs, we also focus on Monte Carlo simulations, simulations based on Characteristic Function, Fourier Transform, etc.
 
 <p align="center">
     <img src="./Summary.png" alt="drawing" width="800"/>
