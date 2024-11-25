@@ -1,6 +1,5 @@
-# Computational Finance
-A repo where I can practice for the course Computational Finance
-
+# Computational Mathematics & Computational Finance :
+This is a repository where I put all my stuff from the course of Computational Finance, AY 2024/2025, Polytecnic University of Milan (Politecnico di Milano).
 
 <p align="center">
     <img src="./Summary.png" alt="drawing" width="800"/>
