@@ -1,6 +1,12 @@
 # Computational Finance
 A repo where I can practice for the course Computational Finance
 
+
+<p align="center">
+    <img src="./Summary.png" alt="drawing" width="800"/>
+</p>
+
+
 ## Content
 | Folder | What's inside ? |
 |:-------|:------------|
