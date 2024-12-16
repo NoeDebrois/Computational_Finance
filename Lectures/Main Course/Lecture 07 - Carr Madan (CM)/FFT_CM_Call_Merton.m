@@ -1,6 +1,10 @@
-function [Price] = FFT_CM_Call_Kou(Strike, params, T, r, S0)
+%% LECTURE 7 - Carr-Madan Method - Noé Debrois - 27/10/2024
+% This code implements the Carr-Madan (CM) algorithm for pricing a plain 
+% vanilla call option using the Merton model for jump-diffusion processes.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function [Price] = FFT_CM_Call_Merton(Strike, params, T, r, S0)
     % Price of a Plain Vanilla Call exploiting the Carr-Madan algorithm.
-    % Model: Kou.
+    % Model: Merton.
     % For explanation on Carr-Madan (CM): see FFT.pdf.
 
     % Discretization parameters:
@@ -12,9 +16,9 @@ function [Price] = FFT_CM_Call_Kou(Strike, params, T, r, S0)
     % - A: Upper bound for the integral domain.
     Npow = 16;
     N = 2^Npow;
-    A = 1000;
+    A = 1000; % Truncation of the integral.
 
-    % Define v_j (or j*eta in the article) -> to compute the integral as a summation:
+    % Define v_j (or j*eta in the article) to compute the integral as a summation:
     %
     % 2nd step: Quadrature formula to compute z_T(k).
     %
@@ -34,18 +38,20 @@ function [Price] = FFT_CM_Call_Kou(Strike, params, T, r, S0)
     k = -lambda * N / 2 + lambda * (0:N-1); % log strike grid
     % k_l = -lambda * N / 2 + lambda * l (l from 0 to N-1).
 
-    tic
+    %tic
 
     % Fourier transform of z_T(k) (denoted Z_k):
     %
-    CharFunc = @(v) exp(T * CharExp(v, params)); % Under Levy measure, Phi @ T = exp(T * Psi)
+    % THIS IS THE ONLY PLACE WHERE THE MODEL ENTERS : change the
+    % characteristic function if you want to change model : here -> Merton.
+    CharFunc = @(v) exp(T * CharExp_MERTON(v, params)); % Under Levy measure, Phi @ T = exp(T * Psi)
     % where Psi is the characteristic exponent (defined in CharExp function below).
     %
     % Risk-neutral check (should equal 1):
-    disp('RiskNeutral Check (should be 1)')
-    CharFunc(-1i) % IT HAS TO BE 1.
+    % disp('RiskNeutral Check (should be 1)')
+    % CharFunc(-1i) % IT HAS TO BE 1.
 
-    % Carr-Madan formula (from FFT.pdf): 
+    % Carr-Madan formula (from FFT.pdf, page 15): 
     Z_k = exp(1i * r * v * T) .* (CharFunc(v - 1i) - 1) ./ ...
         (1i * v .* (1i * v + 1)); 
 
@@ -53,25 +59,32 @@ function [Price] = FFT_CM_Call_Kou(Strike, params, T, r, S0)
     %
     % z_T(k_l) = (1/pi) * FFT({w_j * eta * Z_T(eta * j) * exp(i * j * pi)} 
     % with j ranging from 0 to N-1).
-    %
+    
     % - Setting weights for trapezoidal formula:
     w = ones(1, N);
     w(1) = 0.5;
     w(end) = 0.5;
-    %
+    
     % - Argument inside FFT():
     x = w .* eta .* Z_k .* exp(1i * pi * (0:N-1)); % Integrand for FFT
-    %
+    
     % - FFT formula for z_T(k_l):
-    z_k = real(fft(x) / pi); % Take real part for stability
+    %
+    % ! fft() because MATLAB's FFT is implemented with a "-" in the exp,
+    % whereas probabilists use the IFT with "-". So here we perform the FFT
+    % in MATLAB's POV, but the IFT in probabilists' POV.
+    %
+    z_k = real(fft(x) / pi); % Take real part for stability : due to 
+    % numerical approximation, we need 'real()' to put the imaginary part
+    % to zero. We know theoretically that it should be indeed real.
 
-    % Compute option prices C(k) = z_T(k) + (1 - exp(k - r * T))^+
+    % - Compute option prices C(k) = z_T(k) + (1 - exp(k - r * T))^+
     C = S0 * (z_k + max(1 - exp(k - r * T), 0)); % Option price array
 
-    % Convert log-strikes to strikes:
+    % - Convert log-strikes to strikes:
     K = S0 * exp(k);
 
-    toc
+    %time = toc
 
     % Output Processing:
     % - Filter strikes: remove very small and large strikes.
@@ -80,33 +93,29 @@ function [Price] = FFT_CM_Call_Kou(Strike, params, T, r, S0)
     K = K(index);
 
     % Plot the results:
-    % WARNING: This is not a put option, as the x-axis represents the strike, not the spot price.
+    % - WARNING: This is not a put option, as the x-axis represents the 
+    % strike, not the spot price.
     Price = interp1(K, C, Strike, 'spline');
-    plot(K, C);
-    title('Option Price');
-    xlabel('Strike');
+    %plot(K, C);
+    %title('Option Price');
+    %xlabel('Strike');
 end
 
 %>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-function V = CharExp(v, params)
-% Risk-Neutral characteristic exponent computation.
-sigma=params(1);
-lambda=params(2);
-p=params(3);
-
-lambdap=params(4);
-lambdam=params(5);
-
-V = @(u) -sigma^2*u.^2/2+1i*u*lambda.*...
-    (p./(lambdap-1i*u)-(1-p)./(lambdam+1i*u)); % This is the characteristic
-% exponent of the Lévy process without its drift.
-drift_rn = -V(-1i); % Then compute the Risk-Neutral Drift.
-V = drift_rn * 1i * v + V(v); % And finally write this.
-% This trick works because :
-% v(-i) = driftRN * i * (-i) + v(-i) = driftRN + v(-i). However :
-% driftRN = -v(-i) and therefore : v(-i) = 0 by construction. Therefore we
-% are under the RN measure.
+function PSI_MERTON = CharExp_MERTON(u, params)
+    sigma = params(1);
+    lambda = params(2);
+    mu = params(3);
+    delta = params(4);
+    % 1) (Merton) Characteristic exponent X-hat :
+    V = @(u) - sigma^2 * u.^2 / 2 + lambda *...
+        (exp(-delta^2 * u.^2 /2 + 1i * mu * u) - 1); % cf PDF.
+    % 2) Risk-Neutral Drift (of X) :
+    drift_rn = -V(-1i); 
+    % 3) Characteristic exponent X :
+    PSI_MERTON = drift_rn * 1i * u + V(u);
+    % Therefore we are under the RN measure.
 end
 
 
