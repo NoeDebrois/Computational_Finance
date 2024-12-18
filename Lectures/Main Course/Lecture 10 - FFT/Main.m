@@ -8,7 +8,7 @@ clear; close all;
 param.rf = 0.02; % Risk-free rate
 param.q = 0;     % Dividend
 param.distr = 1; % Normal distribution (if 2 : NIG)
-param.m = 0;     % Drift
+param.m = 0.0;     % Drift
 param.s = 0.2;   % Volatility
 
 % Option parameters :

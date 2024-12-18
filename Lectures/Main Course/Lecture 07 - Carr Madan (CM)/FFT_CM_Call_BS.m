@@ -110,6 +110,7 @@ end
 function V = CharExp(v, params)
     % Risk-Neutral characteristic function computation.
     % Formula for a Geometric Brownian Motion (GBM) :
+    % [WHEN ALREADY CORRECTION TO BE UNDER Q]
     % phi_T(y) = exp(- sigma^2/2 * iyT - sigma^2/2 * y^2 * T)
     % so Psi = - sigma^2/2 * iy - sigma^2/2 * y^2
     %
