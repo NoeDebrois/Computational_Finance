@@ -4,14 +4,14 @@ addpath("CHAR_EXP/");
 % Test parameters
 S_0 = 100;       % Initial spot price
 K = 95;          % Strike price
-Ndate = 100;     % Number of time steps (dates)
+Ndate = 12;      % Number of time steps (dates)
 N = 512;         % Grid size for Fourier transform
 Barrier = 80;    % Barrier level (for Down&Out option)
 param.sigma = 0.2;  % Volatility
 param.dt = 1/252;   % Time step (daily)
 param.rf = 0.05;    % Risk-free rate
 param.q = 0.02;     % Dividend yield
-param.distr = 2;    % Black-Scholes (Normal distribution)
+param.distr = 1;    % Black-Scholes (Normal distribution)
 
 % MERTON (2)
 param.mu = 0.01;

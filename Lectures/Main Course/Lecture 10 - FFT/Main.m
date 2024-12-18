@@ -5,16 +5,16 @@
 clear; close all;
 
 % Model parameters :
-param.rf = 0.02; % Risk-free rate
-param.q = 0;     % Dividend
+param.rf = 0.05; % Risk-free rate
+param.q = 0.02;     % Dividend
 param.distr = 1; % Normal distribution (if 2 : NIG)
 param.m = 0.0;     % Drift
 param.s = 0.2;   % Volatility
 
 % Option parameters :
-S_0 = 1;         % Spot price
-K = 1;           % Strike
-Barrier = 0.8;   % Barrier value
+S_0 = 100;         % Spot price
+K = 95;           % Strike
+Barrier = 80;   % Barrier value
 N = 2^14;        % Grid of log-returns (log(S_T / S_0))
 
 % Time parameters :
